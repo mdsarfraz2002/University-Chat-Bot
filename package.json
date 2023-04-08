@@ -1,25 +1,39 @@
 {
   "name": "university-chat-bot",
-  "version": "1.0.0",
+  "version": "0.0.2",
   "description": "",
-  
+  "main": "App.jsx",
   "scripts": {
-    "predeploy": "npm run build",   
-    "deploy": "gh-pages -d build",    
-    "start": "react-scripts start",   
-    "build": "react-scripts build",   
-    "test": "react-scripts test",   
-    "eject": "react-scripts eject"
+    "start": "chat.py"
   },
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "botkit": "^0.5",
+    "botkit-storage-mongo": "^1.0.6",
+    "dashbot": "0.7.4",
+    "debug": "^2.3.3",
+    "express": "^4.14.0",
+    "node-env-file": "^0.1.8",
+    "querystring": "^0.2.0",
+    "request": "^2.79.0",
+    "wordfilter": "^0.2.6"
+  },
+  "devDependencies": {},
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mdsarfraz2002/University-Chat-Bot.git"
+    "url": "https://github.com/mdsarfraz2002/University-Chat-Bot"
   },
-  "author": "",
-  "license": "ISC",
   "bugs": {
     "url": "https://github.com/mdsarfraz2002/University-Chat-Bot/issues"
   },
-  "homepage": "https://github.com/mdsarfraz2002/University-Chat-Bot#readme"
-}
+  "homepage": "https://github.com/mdsarfraz2002/University-Chat-Bot",
+  "keywords": [
+    "bots",
+    "chatbots",
+    "slack"
+  ],
+  "author": "ben@howdy.ai",
+  "license": "ISC"
 
+
+}
