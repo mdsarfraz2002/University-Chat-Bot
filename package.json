@@ -2,9 +2,9 @@
   "name": "university-chat-bot",
   "version": "0.0.2",
   "description": "",
-  "main": "App.jsx",
+  "main": "/frontend/index.html",
   "scripts": {
-    "start": "chat.py"
+    "start": "/backend/chat.py"
   },
   "dependencies": {
     "body-parser": "^1.15.2",
