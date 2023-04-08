@@ -1,5 +1,6 @@
 # Forge-Pu
-University Chat Bot
+University Chat Bot 
+using NLP techniques which would answer general queries about the university asked by the students and parents, it would reduce a lot of calls made to the reception to ask general questions
 
 TO RUN THE VIKBOT
 
