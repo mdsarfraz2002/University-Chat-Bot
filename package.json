@@ -10,8 +10,8 @@
     "repository": {
         "type": "git",
         "url": "git+https://github.com/mdsarfraz2002/University-Chat-Bot.git"
-  }    "author": "",
-    "license": "ISC",
+  } 
+    
     "bugs": {
         "url": "https://github.com/mdsarfraz2002/University-Chat-Bot/issues"
     },
