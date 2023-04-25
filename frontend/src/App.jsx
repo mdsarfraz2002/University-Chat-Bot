@@ -125,22 +125,25 @@ function App() {
         <div className="flex relative w-full justify-center items-center px-4 py-3 border-t-2 border-zinc-500/30">
 
           <div className={`absolute bottom-20 w-full px-5 ${text ? 'block':'hidden' }`}>
-          <div className='bg-slate-900 max-h-36 overflow-auto px-3 py-2'>
             {
-              dropdownItems.filter(item => item.label.includes(text)).map((itm, key) => {
-                if(text==='') {
-                  return null
-                }
-                else {
-                  return (
-                    <p onClick={() => setText(itm.value)} key={key} className='py-2 border-b-2 border-slate-700/60 cursor-pointer'>{itm.label}</p>
-                  )
-                }
-              })
-            }
 
-          </div>
+              !initialData &&
+            <div className='bg-slate-900 max-h-36 overflow-auto px-3 py-2'>
+              {
+                dropdownItems.filter(item => item.label.includes(text)).map((itm, key) => {
+                  if(text==='') {
+                    return null
+                  }
+                  else {
+                    return (
+                      <p onClick={() => setText(itm.value)} key={key} className='py-2 border-b-2 border-slate-700/60 cursor-pointer'>{itm.label}</p>
+                    )
+                  }
+                })
+              }
 
+            </div>
+}
           </div>
           
           <input onKeyDown={(e) => {
