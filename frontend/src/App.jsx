@@ -11,10 +11,10 @@ const socket = io('http://127.0.0.1:5000')
 
 function App() {
   const [text, setText] = useState('')
-  const [chatSocket, setChatSocket] = useState()
+  const [initialData, setInitialData] = useState(true)
   const [chatMessage, setChatMessage] = useState([])
   const bottomRef = useRef(null)
-
+  
   const dropdownItems = useMemo(() => TransformedItems(), [])
 
   const socketEmit = () => {
@@ -23,9 +23,33 @@ function App() {
       self:true
     }
     setChatMessage((prev) => [...prev, temp])
-    socket.emit('message', {
-      message:text
-    })
+    if(initialData) {
+      if(text.includes(',') && text.includes('@')) {
+        socket.emit('initial_message', {
+          message:text
+        })  
+        setInitialData(false)
+        let thank = {
+          message:'Thank You! Please proceed',
+          self:false
+        }
+        setChatMessage((prev) => [...prev, thank])
+      }
+      else {
+        let error = {
+          message:'Invalid, make sure your details are separated by ,',
+          self:false
+        }
+        setChatMessage((prev) => [...prev, error])
+      }
+      
+    }
+    else {
+      socket.emit('message', {
+        message:text
+      })
+    }
+    
     setText('')
   }
 
@@ -82,7 +106,7 @@ function App() {
 
         <div id='chatscreen' className="flex flex-col w-full h-full overflow-auto px-8 py-5">
         <div class="max-w-3/4 py-1 px-3 font-poppins text-lg rounded-3xl bg-slate-600 text-white mr-auto my-2"  >
-                     Hey, I am VikBot, an AI assistant here to help you!!
+                     Hey, I am VikBot, an AI assistant here to help you!!<br></br>Please enter your Full name, Email and Mobile number separated by ,
         </div>
           {
             chatMessage.map((item, key) => {
@@ -101,22 +125,25 @@ function App() {
         <div className="flex relative w-full justify-center items-center px-4 py-3 border-t-2 border-zinc-500/30">
 
           <div className={`absolute bottom-20 w-full px-5 ${text ? 'block':'hidden' }`}>
-          <div className='bg-slate-900 max-h-36 overflow-auto px-3 py-2'>
             {
-              dropdownItems.filter(item => item.label.includes(text)).map((itm, key) => {
-                if(text==='') {
-                  return null
-                }
-                else {
-                  return (
-                    <p onClick={() => setText(itm.value)} key={key} className='py-2 border-b-2 border-slate-700/60 cursor-pointer'>{itm.label}</p>
-                  )
-                }
-              })
-            }
 
-          </div>
+              !initialData &&
+            <div className='bg-slate-900 max-h-36 overflow-auto px-3 py-2'>
+              {
+                dropdownItems.filter(item => item.label.includes(text)).map((itm, key) => {
+                  if(text==='') {
+                    return null
+                  }
+                  else {
+                    return (
+                      <p onClick={() => setText(itm.value)} key={key} className='py-2 border-b-2 border-slate-700/60 cursor-pointer'>{itm.label}</p>
+                    )
+                  }
+                })
+              }
 
+            </div>
+}
           </div>
           
           <input onKeyDown={(e) => {
