@@ -3,8 +3,7 @@
 
 
 University Chat Bot 
-using NLP techniques which would answer general queries about the university asked by the students and parents, would reduce lot of calls made to the reception to ask general questions
-
+using NLP techniques which would answer general queries about the university asked by the students and parents, would reduce a lot of calls made to the reception to ask general questions
 
 
 # Website link will be available soon
